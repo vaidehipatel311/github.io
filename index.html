@@ -1,0 +1,385 @@
+<title>Vaidehi Patel Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: sticky slim nav, left-aligned hero with a latency strip, experience as a dated timeline, projects as a three-up, skills as a labelled ledger. */
+:root{
+  --bg:#F1F3F7; --surface:#FFFFFF; --fg:#0F1729; --muted:#566178; --line:#D9DEE8;
+  --accent:#2B45E8; --accent-fg:#FFFFFF; --accent-soft:#E4E8FD; --good:#0E8A5F;
+  --font-display:'Schibsted Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Schibsted Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1020; --surface:#121A2F; --fg:#E8ECF6; --muted:#9AA5BD; --line:#233050;
+    --accent:#8FA2FF; --accent-fg:#0B1020; --accent-soft:#1B2547; --good:#4FD1A0; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1020; --surface:#121A2F; --fg:#E8ECF6; --muted:#9AA5BD; --line:#233050;
+  --accent:#8FA2FF; --accent-fg:#0B1020; --accent-soft:#1B2547; --good:#4FD1A0; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;letter-spacing:-0.02em}
+p{margin:0}
+.mono{font-family:var(--font-mono)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-weight:700;text-decoration:none;letter-spacing:-0.01em}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav ul a{display:block;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:14px;font-weight:500}
+.nav ul a:hover{color:var(--fg);background:var(--accent-soft)}
+.toggle{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 10px;font:500 13px var(--font-mono);cursor:pointer}
+.toggle:hover{border-color:var(--accent)}
+@media (max-width:720px){.nav ul{display:none}}
+
+/* hero */
+.hero{padding-block:72px 40px}
+.tag{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--font-mono);color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);flex:none}
+.hero h1{font-size:clamp(2.6rem,8vw,5.5rem);line-height:1;font-weight:800;margin-top:22px}
+.hero h1 span{color:var(--accent)}
+.lede{max-width:62ch;font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--muted);margin-top:22px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.mailline{margin-top:14px;font:400 14px var(--font-mono);color:var(--muted);overflow-wrap:anywhere}
+.mailline b{color:var(--fg);font-weight:500;user-select:all}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:12px;margin-top:48px}
+.metric{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.metric .k{font:500 12px var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.metric .v{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-top:8px;font-variant-numeric:tabular-nums}
+.metric .n{font-size:13px;color:var(--muted);margin-top:6px}
+.bars{display:grid;gap:8px;margin-top:14px}
+.bar{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:10px;font:500 12px var(--font-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.bar i{display:block;height:12px;border-radius:3px;background:var(--line)}
+.bar.after i{background:var(--accent)}
+.bar.b1 i{width:100%}.bar.b2 i{width:66.67%}
+@media (max-width:860px){.metrics{grid-template-columns:1fr 1fr}.metric.wide{grid-column:1/-1}}
+@media (max-width:420px){.metrics{grid-template-columns:1fr}}
+
+/* sections */
+section{padding-block:56px;scroll-margin-top:60px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700}
+.sec-head .mono{font-size:13px;color:var(--muted)}
+
+/* timeline */
+.tl{display:grid;gap:0}
+.job{display:grid;grid-template-columns:200px 1fr;gap:28px;padding-block:28px;border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.when{font:500 13px var(--font-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.when .now{display:inline-block;margin-top:8px;color:var(--good)}
+.job h3{font-size:1.3rem;font-weight:700}
+.job .role{color:var(--accent);font-weight:600;margin-top:2px}
+.job .where{color:var(--muted);font-size:14px;margin-top:2px}
+.job ul{margin:14px 0 0;padding-left:1.1em;display:grid;gap:8px;max-width:72ch}
+.job li::marker{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font:500 12px var(--font-mono);padding:4px 9px;border-radius:6px;background:var(--accent-soft);color:var(--fg)}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:10px}}
+
+/* projects */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card h3{font-size:1.25rem;font-weight:700}
+.card .stat{font-size:2rem;font-weight:800;letter-spacing:-0.03em;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.card .stat small{display:block;font:500 12px var(--font-mono);color:var(--muted);letter-spacing:0;margin-top:6px}
+.card p{color:var(--muted);font-size:15px}
+.card .chips{margin-top:auto;padding-top:4px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr}}
+
+/* skills */
+.ledger{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:200px 1fr;gap:28px;padding-block:16px;border-bottom:1px solid var(--line)}
+.row dt{font:500 13px var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:4px}
+.row dd{margin:0;display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.row .chip{background:var(--surface);border:1px solid var(--line)}
+@media (max-width:760px){.row{grid-template-columns:1fr;gap:8px}}
+
+/* education / certs / activities */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.edu h3{font-size:1.15rem;font-weight:700}
+.edu .deg{margin-top:6px}
+.edu .meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:500 13px var(--font-mono);color:var(--muted);margin-top:10px}
+.edu .course{font-size:14px;color:var(--muted);margin-top:10px}
+.certs{display:grid;gap:10px;margin-top:0}
+.cert{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;font-weight:600}
+.cert:hover{border-color:var(--accent)}
+.cert span:last-child{font:500 12px var(--font-mono);color:var(--accent);white-space:nowrap}
+.act{display:grid;gap:14px}
+.act h3{font-size:1.05rem;font-weight:700}
+.act .meta{font:500 12px var(--font-mono);color:var(--muted);margin-top:4px}
+.act ul{margin:10px 0 0;padding-left:1.1em;color:var(--muted);font-size:15px;display:grid;gap:6px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:48px 64px}
+footer .big{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;letter-spacing:-0.03em;max-width:20ch;line-height:1.1}
+footer .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+footer .fine{margin-top:36px;font:400 12px var(--font-mono);color:var(--muted)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Vaidehi Patel</a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="toggle" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <span class="tag"><span class="dot"></span>Software Engineer · Portland, Oregon</span>
+      <h1>Vaidehi <span>Patel</span></h1>
+      <p class="lede">Software engineer building scalable Java/Spring Boot microservices and full-stack React/Node.js products, backed by cloud (AWS/GCP), CI/CD and applied AI/ML. Faster APIs, automated pipelines and reliable releases.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="https://github.com/vaidehipatel311" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/vaidehipatel311/" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="btn" id="copyMail" type="button">Copy email</button>
+      </div>
+      <p class="mailline">Email: <b>vaidehip311@gmail.com</b></p>
+
+      <div class="metrics" aria-label="Selected results">
+        <div class="metric wide">
+          <div class="k">API response time · Besitec</div>
+          <div class="bars">
+            <div class="bar b1"><span>750ms</span><i></i></div>
+            <div class="bar b2 after"><span>500ms</span><i></i></div>
+          </div>
+        </div>
+        <div class="metric"><div class="k">Manual release effort</div><div class="v">−70%</div><div class="n">Jenkins CI/CD pipelines</div></div>
+        <div class="metric"><div class="k">Security vulnerabilities</div><div class="v">−60%</div><div class="n">Hardened access flows</div></div>
+        <div class="metric"><div class="k">Manual review effort</div><div class="v">−80%</div><div class="n">Cloud Resume Analyzer</div></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><h2>Experience</h2><span class="mono">4 roles · 2023 to present</span></div>
+      <div class="tl">
+
+        <article class="job">
+          <div class="when">Sep 2025 – Present<br><span class="now">● Current role</span></div>
+          <div>
+            <h3>LetsSolv</h3>
+            <div class="role">Software Engineer Intern</div>
+            <div class="where">Portland, Oregon, USA</div>
+            <ul>
+              <li>Onboarding onto the engineering team, learning the ML-driven product architecture, codebase and development workflows.</li>
+              <li>Setting up local development and model-testing environments, and learning the Python/ML tech stack and coding standards.</li>
+              <li>Collaborating with engineers on early bug-fix and small feature tickets while shadowing code reviews and sprint planning.</li>
+            </ul>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Machine Learning</span></div>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="when">Oct 2024 – May 2026</div>
+          <div>
+            <h3>University of Texas at Arlington, Office of Admissions</h3>
+            <div class="role">Operations Intern</div>
+            <div class="where">Arlington, Texas, USA</div>
+            <ul>
+              <li>Streamlined admissions workflows for 1,100+ applicants via data pipelines in Slate and Genesys, reducing processing time by ~25%.</li>
+              <li>Managed schedules and automated alerts for 25–30 student staff, ensuring 100% on-time applicant submissions and eliminating manual tasks.</li>
+              <li>Ran data validation and compliance audits on 1,000+ applicant records, improving data integrity and reducing errors by ~30%.</li>
+              <li>Developed dashboards and reporting tools to track admissions metrics, helping leadership make informed decisions and improve application turnaround.</li>
+            </ul>
+            <div class="chips"><span class="chip">Slate</span><span class="chip">Genesys</span><span class="chip">Data pipelines</span><span class="chip">Reporting</span></div>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="when">Dec 2023 – May 2024</div>
+          <div>
+            <h3>CloseDigit LLP</h3>
+            <div class="role">Full Stack &amp; Web Development Intern</div>
+            <div class="where">Ahmedabad, India</div>
+            <ul>
+              <li>Built “Carbon Mint,” a React-based dashboard managing 100+ landowner and parcel records with secure authentication and role-based access control.</li>
+              <li>Used Node.js and JavaScript to harden access flows, reducing security vulnerabilities by ~60%.</li>
+              <li>Refactored legacy API endpoints and optimized database queries, improving data retrieval speed by ~40% and supporting seamless real-time updates.</li>
+              <li>Implemented automated testing with Jest and Cypress, increasing reliability and reducing QA defects by 35%.</li>
+              <li>Collaborated with UI/UX designers to improve dashboard usability, increasing user adoption and efficiency in landowner management tasks.</li>
+            </ul>
+            <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">JavaScript</span><span class="chip">Jest</span><span class="chip">Cypress</span></div>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="when">Jan 2023 – Dec 2023</div>
+          <div>
+            <h3>Besitec</h3>
+            <div class="role">Software Engineer (Remote)</div>
+            <div class="where">Hamburg, Germany</div>
+            <ul>
+              <li>Worked remotely with the Hamburg-based IT and EDI services team, supporting custom software solutions for enterprise clients across industries.</li>
+              <li>Designed and implemented enterprise Java microservices using Spring Boot and Hibernate, improving system scalability and fault tolerance by ~35%.</li>
+              <li>Developed REST APIs and optimized object-relational mappings and database queries, reducing average API response time from 750ms to 500ms.</li>
+              <li>Wrote unit tests with JUnit and Mockito to validate microservice and API behavior, improving code reliability.</li>
+              <li>Introduced CI/CD pipelines via Jenkins, automating deployments and reducing manual release effort by ~70%.</li>
+              <li>Built modular components following OOP principles and managed source code with Tortoise SVN, enabling reuse across multiple projects.</li>
+            </ul>
+            <div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Hibernate</span><span class="chip">JUnit</span><span class="chip">Mockito</span><span class="chip">Jenkins</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head"><h2>Projects</h2><span class="mono">mobile · full-stack · cloud</span></div>
+      <div class="grid3">
+        <article class="card">
+          <div class="stat">1,000+<small>image uploads handled</small></div>
+          <h3>Camelab</h3>
+          <p>A mobile photo-sharing app with real-time collaboration and notifications, which improved user engagement by 40%. Uses secure cloud storage and efficient image caching for faster load times.</p>
+          <div class="chips"><span class="chip">React Native</span><span class="chip">Redux</span><span class="chip">Node.js</span></div>
+        </article>
+        <article class="card">
+          <div class="stat">−60%<small>manual tracking time</small></div>
+          <h3>Expense Tracker</h3>
+          <p>A full-stack web app to log and analyze 1,000+ expense transactions, with dynamic charts and filtering. REST APIs with authentication and optimized queries improved response times by 35%.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">REST API</span></div>
+        </article>
+        <article class="card">
+          <div class="stat">3,000+<small>resumes analyzed and ranked</small></div>
+          <h3>Cloud Resume Analyzer</h3>
+          <p>A cloud-based system on AWS Lambda and DynamoDB with automated scoring and PDF parsing pipelines, cutting manual review effort by 80%. An analytics dashboard visualizes candidate rankings for faster hiring decisions.</p>
+          <div class="chips"><span class="chip">Flask</span><span class="chip">AWS</span><span class="chip">DynamoDB</span></div>
+        </article>
+      </div>
+      <div class="cta"><a class="btn" href="https://github.com/vaidehipatel311" target="_blank" rel="noopener">More on GitHub →</a></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><h2>Skills</h2><span class="mono">languages · frameworks · cloud · ML</span></div>
+      <dl class="ledger" style="margin:0">
+        <div class="row"><dt>Programming</dt><dd><span class="chip">Java (Advanced/Core)</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">C/C++</span><span class="chip">C#</span><span class="chip">SQL</span><span class="chip">NoSQL</span><span class="chip">Swift</span></dd></div>
+        <div class="row"><dt>Core CS</dt><dd><span class="chip">Data Structures</span><span class="chip">Object-Oriented Programming</span><span class="chip">Algorithmic Problem Solving</span><span class="chip">Generic Programming</span><span class="chip">System Design</span><span class="chip">Distributed Systems</span></dd></div>
+        <div class="row"><dt>Web</dt><dd><span class="chip">HTML/CSS</span><span class="chip">ReactJS</span><span class="chip">NodeJS</span><span class="chip">AngularJS</span><span class="chip">Next.js</span><span class="chip">React Native</span><span class="chip">iOS (Swift, MVC)</span></dd></div>
+        <div class="row"><dt>Frameworks</dt><dd><span class="chip">Spring MVC</span><span class="chip">Spring Boot</span><span class="chip">Hibernate</span><span class="chip">.NET</span><span class="chip">REST APIs</span><span class="chip">Microservices</span></dd></div>
+        <div class="row"><dt>DevOps / Tools</dt><dd><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">Jenkins CI/CD</span><span class="chip">Git/GitHub</span><span class="chip">Tortoise SVN</span></dd></div>
+        <div class="row"><dt>Web servers</dt><dd><span class="chip">JBOSS</span><span class="chip">Tomcat</span><span class="chip">Apache Tomcat</span><span class="chip">Apache HTTP Server</span></dd></div>
+        <div class="row"><dt>AI / ML</dt><dd><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">Neural Networks</span><span class="chip">Generative AI</span><span class="chip">LLM Applications</span><span class="chip">Computer Vision (YOLO)</span><span class="chip">Prompt Engineering</span><span class="chip">RAG</span><span class="chip">Embeddings</span><span class="chip">Vector Databases</span><span class="chip">Model Deployment</span><span class="chip">Scikit-learn</span><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">OpenCV</span></dd></div>
+        <div class="row"><dt>Cloud</dt><dd><span class="chip">AWS EC2</span><span class="chip">S3</span><span class="chip">Lambda</span><span class="chip">RDS</span><span class="chip">VPC</span><span class="chip">IAM</span><span class="chip">GCP Compute Engine</span><span class="chip">GCP Cloud Storage</span></dd></div>
+        <div class="row"><dt>Databases</dt><dd><span class="chip">Oracle</span><span class="chip">MySQL</span><span class="chip">SQL Server</span><span class="chip">MongoDB</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head"><h2>Education &amp; certifications</h2></div>
+      <div class="two">
+        <div class="card edu">
+          <h3>University of Texas at Arlington</h3>
+          <div class="deg">Master of Science in Computer Science</div>
+          <div class="meta"><span>Aug 2024 – May 2026</span><span>GPA 3.67 / 4</span></div>
+          <p class="course">Coursework: AI, ML, Distributed Systems, Data Structures &amp; Algorithms, Cloud Computing</p>
+        </div>
+        <div class="card edu">
+          <h3>Gujarat Technological University</h3>
+          <div class="deg">Bachelor of Engineering in Computer Engineering</div>
+          <div class="meta"><span>Aug 2019 – May 2023 · Ahmedabad, India</span><span>CGPA 8.67 / 10</span></div>
+          <p class="course">Coursework: Computer Networks, Software Engineering, Database Management</p>
+        </div>
+      </div>
+
+      <div class="two" style="margin-top:28px">
+        <div>
+          <div class="sec-head" style="margin-bottom:14px"><h2 style="font-size:1.3rem">Certifications</h2></div>
+          <div class="certs">
+            <a class="cert" href="https://www.credly.com/badges/936fd928-92b3-485b-aef6-ccc5468152cd/public_url" target="_blank" rel="noopener"><span>AWS Cloud Architecting Certified</span><span>Credly ↗</span></a>
+            <a class="cert" href="https://www.credly.com/badges/e225d5e5-3981-4be9-be7e-85cd9fcdb0c5/print" target="_blank" rel="noopener"><span>Cloud Security Builder</span><span>Credly ↗</span></a>
+            <a class="cert" href="https://www.credly.com/badges/122e900c-bf1b-42b4-8131-2390a5639c9f/print" target="_blank" rel="noopener"><span>AWS Microservices, CI/CD Pipeline</span><span>Credly ↗</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="sec-head" style="margin-bottom:14px"><h2 style="font-size:1.3rem">Extracurricular</h2></div>
+          <div class="act">
+            <div class="card">
+              <h3>Engineering Student Council Member</h3>
+              <div class="meta mono">University of Texas at Arlington · Sep 2024 – Sep 2025</div>
+              <ul><li>Represent engineering students in council meetings, sharing feedback on academic and campus initiatives.</li><li>Help plan and coordinate engineering events, workshops and student outreach activities.</li></ul>
+            </div>
+            <div class="card">
+              <h3>IEEE Student Member</h3>
+              <div class="meta mono">Silver Oak University IEEE Student Branch · Mar 2021 – Mar 2023</div>
+              <ul><li>Hosted and volunteered at IEEE events, supporting planning, coordination and on-ground execution with diverse student teams.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="big">Open to software engineering roles.</p>
+    <div class="links">
+      <button class="btn primary" id="copyMail2" type="button">Copy email</button>
+      <a class="btn" href="https://www.linkedin.com/in/vaidehipatel311/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/vaidehipatel311" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p class="mailline" style="margin-top:16px">vaidehip311@gmail.com</p>
+    <p class="fine">© Vaidehi Patel</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('themeBtn');
+  function systemDark(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches}
+  function current(){return root.getAttribute('data-theme')||(systemDark()?'dark':'light')}
+  function label(){btn.textContent=current()==='dark'?'Light mode':'Dark mode'}
+  try{var saved=localStorage.getItem('theme');if(saved==='dark'||saved==='light')root.setAttribute('data-theme',saved)}catch(e){}
+  label();
+  btn.addEventListener('click',function(){
+    var next=current()==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next)}catch(e){}
+    label();
+  });
+  function copy(b){
+    var text='vaidehip311@gmail.com',orig=b.textContent;
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent=orig},1600)}
+    function fallback(){
+      var r=document.createRange(),el=document.querySelector('.mailline b');
+      if(el){r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+      b.textContent='Press Ctrl/Cmd+C';setTimeout(function(){b.textContent=orig},2200);
+    }
+    try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+  }
+  ['copyMail','copyMail2'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',function(){copy(b)})});
+})();
+</script>
